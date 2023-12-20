@@ -14,5 +14,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+Route::get('/dashboard', function () {
+    return view('home', [
+        "selected" => "dashboard"
+    ]);
+});
+Route::get('/rooms', function () {
+    return view('rooms', [
+        "selected" => "rooms"
+    ]);
+});
+Route::get('/add', function () {
+    return view('add', [
+        "selected" => "add"
+    ]);
+});
+Route::get('/transactions', function () {
+    return view('trans', [
+        "selected" => "transactions"
+    ]);
+});
+Route::get('/modify', function () {
+    return view('modify', [
+        "selected" => "modify"
+    ]);
 });
