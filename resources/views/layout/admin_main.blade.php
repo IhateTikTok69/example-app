@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/ap.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/app.css" />
   </head>
 
@@ -16,9 +17,9 @@
       <a href="#" class="text-2xl font-bold text-blue-600">ADMIN PANNEL</a>
       <div class="userArea">
         <button class="float-right ps-1 py-1">Admin Name</button>
-        <button class="adminProfile"></button>
+        <button class="adminProfile"><img src="assets/usr/rick.webp" alt=""></button>
         <button class="adminProfile me-5">
-          <img src="/assets/mail.png" alt="" />
+          <img style="border-radius: 0px;" src="assets/mail.png" alt="" />
         </button>
       </div>
     </div>

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\fetcher;
-use App\Http\Requests\StorefetcherRequest;
-use App\Http\Requests\UpdatefetcherRequest;
+use App\Models\transactions;
+use App\Http\Requests\StoretransactionsRequest;
+use App\Http\Requests\UpdatetransactionsRequest;
 
-class FetcherController extends Controller
+class TransactionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class FetcherController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorefetcherRequest $request)
+    public function store(StoretransactionsRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class FetcherController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(fetcher $fetcher)
+    public function show(transactions $transactions)
     {
         //
     }
@@ -43,7 +43,7 @@ class FetcherController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(fetcher $fetcher)
+    public function edit(transactions $transactions)
     {
         //
     }
@@ -51,7 +51,7 @@ class FetcherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatefetcherRequest $request, fetcher $fetcher)
+    public function update(UpdatetransactionsRequest $request, transactions $transactions)
     {
         //
     }
@@ -59,7 +59,7 @@ class FetcherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(fetcher $fetcher)
+    public function destroy(transactions $transactions)
     {
         //
     }

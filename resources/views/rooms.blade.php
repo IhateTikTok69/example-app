@@ -6,7 +6,9 @@
     <p class="cursor-default">Home / Rooms</p>
     <div class="seperator-2">
       <div class="main-cards">
-        <div class="full-card"></div>
+        <div class="full-card">
+          
+        </div>
       </div>
       <div>
         <div class="card-2 mt-0">

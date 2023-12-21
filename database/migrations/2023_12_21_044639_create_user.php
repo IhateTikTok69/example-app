@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fetchers', function (Blueprint $table) {
-            $table->id();
+        Schema::create('users', function (Blueprint $table) {
+            $table->id('user_id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('imgpath')->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fetchers');
+        Schema::dropIfExists('users');
     }
 };
