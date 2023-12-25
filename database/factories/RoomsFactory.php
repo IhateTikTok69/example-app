@@ -17,8 +17,14 @@ class RoomsFactory extends Factory
     public function definition(): array
     {
         return [
-            'price' => $this->faker->numberBetween(200, 300),
+            'price' => $this->faker->numberBetween(200, 1000),
             'availability' => $this->faker->boolean,
+            'wifi' => $this->faker->boolean,
+            'gym' => $this->faker->boolean,
+            'breakfast' => $this->faker->boolean,
+            'park' => $this->faker->boolean,
+            'smoking' => $this->faker->boolean,
+            'pool' => $this->faker->boolean,
         ];
     }
 }

@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginCrontroller;
+use App\Http\Controllers\modifyController;
+use App\Http\Controllers\NewRoom;
+use App\Http\Controllers\RoomsController;
+use App\Http\Controllers\TransactionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,30 +20,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', []);
 });
-Route::get('/dashboard', function () {
-    return view('home', [
-        "selected" => "dashboard"
-    ]);
-});
-Route::get('/rooms', function () {
-    return view('rooms', [
-        "selected" => "rooms"
-    ]);
-});
-Route::get('/add', function () {
-    return view('add', [
-        "selected" => "add"
-    ]);
-});
-Route::get('/transactions', function () {
-    return view('trans', [
-        "selected" => "transactions"
-    ]);
-});
-Route::get('/modify', function () {
-    return view('modify', [
-        "selected" => "modify"
-    ]);
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('login/', [LoginCrontroller::class, 'index'])->name('adminLogin');
+    Route::post('login/', [LoginCrontroller::class, 'authenticate']);
+    Route::post('logout/', [LoginCrontroller::class, 'logout']);
+    Route::get('/', [AdminController::class, 'index']);
+    Route::middleware(['admin.auth'])->group(function () {
+        Route::get('dashboard', [AdminController::class, 'index'])->name('adminDashboard');
+        Route::post('dashboard/getSales', [AdminController::class, 'getSales'])->name('dashboard.getSales');
+        Route::post('dashboard/getRevenue', [AdminController::class, 'getRevenue']);
+        Route::post('dashboard/getRegister', [AdminController::class, 'getRegister']);
+        Route::get('rooms', [RoomsController::class, 'index']);
+        Route::post('rooms/fetchData', [RoomsController::class, 'fetchData']);
+        Route::get('add', [NewRoom::class, 'index']);
+        Route::get('transactions', [TransactionsController::class, 'index']);
+        Route::get('modify', [modifyController::class, 'index']);
+    });
 });

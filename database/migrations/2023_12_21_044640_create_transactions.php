@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('booking_id')->nullable()->unique();
             $table->float('bill');
             $table->string('status');
+            $table->dateTime('completed_at')->nullable();
             $table->timestamps();
 
             // Foreign Key for 'roomNum'

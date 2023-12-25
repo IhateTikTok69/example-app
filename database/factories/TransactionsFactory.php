@@ -17,14 +17,13 @@ class TransactionsFactory extends Factory
     public function definition(): array
     {
         return [
-            'roomNum' => $this->faker->numberBetween(1, 10),
-            'user_id' => $this->faker->numberBetween(1, 10),
+            'roomNum' => $this->faker->numberBetween(1, 100),
+            'user_id' => $this->faker->numberBetween(1, 100),
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'phone' => fake()->phoneNumber(),
-            'booking_id' => fake()->safeEmail(),
             'bill' => $this->faker->numberBetween(200, 300),
-            'status' => $this->faker->randomElement(['created', 'verified', 'closed']),
+            'status' => $this->faker->randomElement(['created', 'paid', 'completed']),
         ];
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('facilities', function (Blueprint $table) {
-            $table->id('f_ID');
+            $table->id('id');
             $table->unsignedBigInteger('roomNum')->index()->unique();
             $table->boolean('wifi');
             $table->boolean('gym');
