@@ -6,6 +6,7 @@ use App\Models\rooms;
 use App\Http\Requests\StoreroomsRequest;
 use App\Http\Requests\UpdateroomsRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RoomsController extends Controller
 {
@@ -38,6 +39,43 @@ class RoomsController extends Controller
 
 
         return view('/admin/rooms/data', compact('rooms'))->render();
+    }
+
+    public function NewRoom()
+    {
+        return view('/admin/add', [
+            "selected" => "add"
+        ]);
+    }
+    public function delete(Request $request)
+    {
+        $key = $request->input('id');
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('rooms')->where('roomNum', $key)->delete();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        return back();
+    }
+    public function insert(Request $request)
+    {
+        $price = $request->input('price');
+        $availability = $request->input('availability');
+        $wifi = $request->input('wifi');
+        $gym = $request->input('gym');
+        $breakfast = $request->input('breakfast');
+        $smoking = $request->input('smoking');
+        $park = $request->input('park');
+        $pool = $request->input('pool');
+        rooms::create([
+            'price' => $price,
+            'availability' => $availability,
+            'wifi' => $wifi,
+            'gym' => $gym,
+            'breakfast' => $breakfast,
+            'smoking' => $smoking,
+            'park' => $park,
+            'pool' => $pool,
+        ]);
+        return back();
     }
     /**
      * Show the form for creating a new resource.

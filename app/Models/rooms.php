@@ -9,11 +9,7 @@ class rooms extends Model
 {
     use HasFactory;
     protected $primaryKey = 'roomNum';
-
-    public function facility()
-    {
-        return $this->hasOne(Facility::class, 'roomNum', 'roomNum');
-    }
+    protected $guarded = [];
     public function tranasactions()
     {
         return $this->hasMany(transactions::class);

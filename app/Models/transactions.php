@@ -21,4 +21,12 @@ class transactions extends Model
 
         return $this->name;
     }
+    public function user()
+    {
+        return $this->belongsTo(users::class);
+    }
+    public function room()
+    {
+        return $this->belongsTo(rooms::class);
+    }
 }

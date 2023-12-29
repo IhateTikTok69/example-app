@@ -1,0 +1,1 @@
+<p> ${{number_format($revenue)}} </p>

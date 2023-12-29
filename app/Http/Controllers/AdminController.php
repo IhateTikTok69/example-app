@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\admin;
+use App\Helpers\Helper;
 use App\Models\transactions;
 use App\Http\Requests\StoreadminRequest;
 use App\Http\Requests\UpdateadminRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\users;
+use Illuminate\Database\Query\Builder;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -19,15 +22,31 @@ class AdminController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $user = Auth::guard('admin')->user();
-            $sales = transactions::where('status', 'paid')->orWhere('status', 'completed')->count();
-            $revenue = transactions::where('status', 'paid')->orWhere('status', 'completed')->sum('bill');
-            $countUser = users::count();
-            $recent = transactions::latest('updated_at')->take('6')->get();
+
+            // GET REPORT CHARTS
+            $sales = transactions::select('trans_id', 'created_at', 'bill')
+                ->whereYear('created_at', now()->year)
+                ->whereMonth('created_at', 12)
+                ->orderBy('created_at')->get() // Sort by created_at in ascending order
+                ->groupBy(function ($sales) {
+                    return Carbon::parse($sales->created_at)->format('Y/m/d');
+                });
+            $days = [];
+            $salesCount = [];
+            foreach ($sales as $sale => $values) {
+                $days[] = $sale;
+                $salesCount[] = $values->sum('bill');
+            }
+
+            // GET REPORT CHARTS
+
+            $countUser = users::get();
+            $recent = transactions::orderBy('created_at', 'desc')->take('6')->get();
             return view('/admin/main/index', [
                 "selected" => "dashboard",
                 'user' => $user,
-                'revenue' => $revenue,
-                'Sales' => $sales,
+                'salesCount' => $salesCount,
+                'days' => $days,
                 'countUser' => $countUser,
                 'recents' => $recent,
             ]);
@@ -35,28 +54,80 @@ class AdminController extends Controller
             return redirect()->route('adminLogin')->with('Error', 'Invalid Credentials');
         }
     }
+    // GET REPORT CHARTS
 
+    //GET SALES DATA
     public function getSales(Request $request)
     {
         $dateFilter = $request->input('dateFIlter');
 
         switch ($dateFilter) {
-            case 'today':
-                $records = transactions::whereDate('created_at', today())->count();
+            case 'Today':
+                $records = transactions::with('user', 'room')->whereDate('created_at', today())->count();
                 break;
-            case 'this_week':
-                $records = transactions::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->get();
+            case 'This Week':
+                $records = transactions::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->count();
                 break;
-            case 'this_month':
+            case 'This Month':
                 $records = transactions::whereYear('created_at', now()->year)
                     ->whereMonth('created_at', now()->month)
-                    ->get();
+                    ->count();
                 break;
         }
 
         return view('/admin/main/sales', compact('records'))->render();
     }
 
+    //GET REVENUE DATA
+    public function getRevenue(Request $request)
+    {
+        $dateFilter = $request->input('dateFIlter');
+
+        switch ($dateFilter) {
+            case 'Today':
+                $revenue = transactions::whereDate('created_at', today())->where(function ($query) {
+                    $query->where('status', 'paid')
+                        ->orWhere('status', 'completed');
+                })->sum('bill');
+                break;
+            case 'This Week':
+                $revenue = transactions::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where(function ($query) {
+                    $query->where('status', 'paid')
+                        ->orWhere('status', 'completed');
+                })->sum('bill');
+                break;
+            case 'This Month':
+                $revenue = transactions::whereYear('created_at', now()->year)
+                    ->whereMonth('created_at', now()->month)->where(function ($query) {
+                        $query->where('status', 'paid')
+                            ->orWhere('status', 'completed');
+                    })->sum('bill');
+                break;
+        }
+
+        return view('/admin/main/revenue', compact('revenue'))->render();
+    }
+    //GET REGISTRATIONS DATA
+    public function getRegister(Request $request)
+    {
+        $dateFilter = $request->input('dateFIlter');
+
+        switch ($dateFilter) {
+            case 'Today':
+                $records = users::whereDate('created_at', today())->count();
+                break;
+            case 'This Week':
+                $records = users::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->count();
+                break;
+            case 'This Month':
+                $records = users::whereYear('created_at', now()->year)
+                    ->whereMonth('created_at', now()->month)
+                    ->count();
+                break;
+        }
+
+        return view('/admin/main/customer', compact('records'))->render();
+    }
     /**
      * Show the form for creating a new resource.
      */

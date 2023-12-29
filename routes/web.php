@@ -7,6 +7,7 @@ use App\Http\Controllers\modifyController;
 use App\Http\Controllers\NewRoom;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\TransactionsController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::middleware(['admin.auth'])->group(function () {
         Route::get('dashboard', [AdminController::class, 'index'])->name('adminDashboard');
         Route::post('dashboard/getSales', [AdminController::class, 'getSales'])->name('dashboard.getSales');
-        Route::post('dashboard/getRevenue', [AdminController::class, 'getRevenue']);
-        Route::post('dashboard/getRegister', [AdminController::class, 'getRegister']);
-        Route::get('rooms', [RoomsController::class, 'index']);
+        Route::post('dashboard/getRevenue', [AdminController::class, 'getRevenue'])->name('dashboard.getRevenue');
+        Route::post('dashboard/getRegister', [AdminController::class, 'getRegister'])->name('dashboard.getRegister');
+        Route::get('rooms', [RoomsController::class, 'index'])->name('roomView');
+        Route::post('rooms/delete', [RoomsController::class, 'delete']);
+        Route::post('rooms/insert', [RoomsController::class, 'insert']);
         Route::post('rooms/fetchData', [RoomsController::class, 'fetchData']);
-        Route::get('add', [NewRoom::class, 'index']);
+        Route::get('add', [RoomsController::class, 'NewRoom']);
         Route::get('transactions', [TransactionsController::class, 'index']);
         Route::get('modify', [modifyController::class, 'index']);
     });

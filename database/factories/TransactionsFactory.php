@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Carbon\Carbon;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\transactions>
@@ -16,14 +17,17 @@ class TransactionsFactory extends Factory
      */
     public function definition(): array
     {
+        $startDate = Carbon::now()->subMonth();
+        $endDate = Carbon::now();
         return [
             'roomNum' => $this->faker->numberBetween(1, 100),
             'user_id' => $this->faker->numberBetween(1, 100),
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'phone' => fake()->phoneNumber(),
-            'bill' => $this->faker->numberBetween(200, 300),
-            'status' => $this->faker->randomElement(['created', 'paid', 'completed']),
+            'bill' => $this->faker->numberBetween(30, 60),
+            'status' => $this->faker->randomElement(['created', 'paid', 'completed', 'canceled']),
+            'created_at' => $this->faker->dateTimeBetween($startDate, $endDate),
         ];
     }
 }

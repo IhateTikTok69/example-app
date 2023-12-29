@@ -9,8 +9,5 @@ class NewRoom extends Controller
 {
     public function index()
     {
-        return view('/admin/add', [
-            "selected" => "add"
-        ]);
     }
 }

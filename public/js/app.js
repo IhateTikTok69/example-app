@@ -62,4 +62,18 @@ $(document).ready(function () {
         }
         console.log("cock");
     });
+
+    $(document).on("click", function (event) {
+        var dropdown = $(".date-filter ");
+        var dropdownContent = $(".dateFilterChoice");
+
+        if (
+            !dropdown.is(event.target) &&
+            dropdown.has(event.target).length === 0
+        ) {
+            // Clicked outside the dropdown
+            dropdownContent.removeClass("active");
+            console.log("1212"); // Or remove the 'active' class
+        }
+    });
 });
