@@ -1,8 +1,5 @@
 @extends('admin.layout.main')
 @section('contents')
-<section id="dashboard" class="content active">
-    <h1 class="text-2xl ">Dashboard</h1>
-    <p class="cursor-default text-black">Home / Dashboard</p>
     <div class="seperator">
       <div class="main-cards">
         <div class="highlight-1">
@@ -45,12 +42,13 @@
           <div id="myChart"></div>
         </div>
         <div class="card-2 dark:bg-slate-800 dark:text-white">
-          <p class="text-lg ">Monthly | <i class=" text-slate-400">Sales Reports </i> </p>
+          <p class="text-lg ">Monthly | <i class=" text-slate-400">Top Selling </i> </p>
+          
         </div>
       </div>
       <div class="content-2">
         <div class="card-2 mt-0 dark:bg-slate-800 dark:text-white relative text-black h-fit">
-          <h1 class=" text-lg mb-10 font-bold text-blue-950"> Recent Transactions</h1>
+          <h1 class=" text-lg mb- font-bold text-blue-950"> Recent | <i class=" text-slate-400 font-thin">Transactions </i></h1>
           @foreach ($recents as $index => $recent)
          <div class="flex"> <span class="w-20 text-sm text-slate-400">{{timeAgo($recent->created_at)}}</span>
           @if ($recent->status == 'created')
@@ -72,8 +70,9 @@
         <div class="card-2 dark:bg-slate-800 dark:text-white"></div>
       </div>  
     </div>
-  </section>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/js/main.js" data-url="">
+</script>
 <script type="text/javascript">
     var routeUrls = {
         'route1': "{{ route('dashboard.getSales') }}",
@@ -87,7 +86,7 @@
     console.log('{!! json_encode($salesCount) !!}')
     var options = {
       chart: {
-        type: 'bar',
+        type: 'line',
         height: 350,
         zoom: {
             enabled: false
@@ -100,7 +99,7 @@
           enabled: false
         },
       stroke: {
-        curve: 'smooth'
+        curve: 'stepline'
       },
       series: [{
         name: 'Revenue $ ',
@@ -108,6 +107,10 @@
       }],
       xaxis: {
         categories: labels,
+        type: 'datetime',
+        labels: {
+          datetimeUTC: false
+        }
       }
     }
 
@@ -115,7 +118,6 @@
 
     chart.render();
 </script>
-<script src="/js/main.js" data-url="">
-</script>
+
 
 @endsection

@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\transactions;
-use App\Http\Requests\StoretransactionsRequest;
-use App\Http\Requests\UpdatetransactionsRequest;
+use App\Models\variant;
+use App\Http\Requests\StorevariantRequest;
+use App\Http\Requests\UpdatevariantRequest;
 
-class TransactionsController extends Controller
+class VariantController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('/admin/trans', [
-            "selected" => "transactions",
-            "Title" => 'Transactions Info',
-        ]);
+        //
     }
 
     /**
@@ -30,7 +27,7 @@ class TransactionsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoretransactionsRequest $request)
+    public function store(StorevariantRequest $request)
     {
         //
     }
@@ -38,7 +35,7 @@ class TransactionsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(transactions $transactions)
+    public function show(variant $variant)
     {
         //
     }
@@ -46,7 +43,7 @@ class TransactionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(transactions $transactions)
+    public function edit(variant $variant)
     {
         //
     }
@@ -54,7 +51,7 @@ class TransactionsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatetransactionsRequest $request, transactions $transactions)
+    public function update(UpdatevariantRequest $request, variant $variant)
     {
         //
     }
@@ -62,7 +59,7 @@ class TransactionsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(transactions $transactions)
+    public function destroy(variant $variant)
     {
         //
     }

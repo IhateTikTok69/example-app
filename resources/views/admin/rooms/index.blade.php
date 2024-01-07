@@ -1,9 +1,6 @@
 @extends('admin.layout.main')
 
 @section('contents')
-<section id="rooms" class="content">
-    <h1 class="text-2xl font-semibold text-blue-600">Rooms</h1>
-    <p class="cursor-default">Home / Rooms</p>
     <div class="seperator-2">
       <div class="main-cards">
         <div class="full-card">
@@ -33,8 +30,6 @@
         </div>
       </div>
     </div>
-    
-  </section>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function() {

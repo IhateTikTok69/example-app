@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notif', function (Blueprint $table) {
-            $table->id("notifID");
-            $table->boolean('opened');
-            $table->string("header");
-            $table->string('content');
+        Schema::create('sub_categories', function (Blueprint $table) {
+            $table->id('sub_cat_id');
+            $table->unsignedBigInteger('cat_id')->index();
+            $table->string('sub_category');
             $table->timestamps();
+
+            $table->foreign('cat_id')->references('cat_id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notif');
+        Schema::dropIfExists('sub_categories');
     }
 };

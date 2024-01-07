@@ -27,6 +27,6 @@ class transactions extends Model
     }
     public function room()
     {
-        return $this->belongsTo(rooms::class);
+        return $this->belongsTo(product::class);
     }
 }

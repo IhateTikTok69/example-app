@@ -9,7 +9,8 @@ class modifyController extends Controller
     public function index()
     {
         return view('/admin/modify', [
-            "selected" => "modify"
+            "selected" => "modify",
+            "Title" => 'Modify Web',
         ]);
     }
 }

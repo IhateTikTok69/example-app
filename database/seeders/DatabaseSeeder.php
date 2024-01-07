@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        users::factory(100)->create();
-        rooms::factory(100)->create();
+        users::factory(20)->create();
+        rooms::factory(20)->create();
         transactions::factory(500)->create();
         admin::create([
             'name' => fake()->name(),

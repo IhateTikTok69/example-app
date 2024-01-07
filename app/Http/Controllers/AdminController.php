@@ -26,7 +26,7 @@ class AdminController extends Controller
             // GET REPORT CHARTS
             $sales = transactions::select('trans_id', 'created_at', 'bill')
                 ->whereYear('created_at', now()->year)
-                ->whereMonth('created_at', 12)
+                ->whereMonth('created_at', now())
                 ->orderBy('created_at')->get() // Sort by created_at in ascending order
                 ->groupBy(function ($sales) {
                     return Carbon::parse($sales->created_at)->format('Y/m/d');
@@ -44,6 +44,7 @@ class AdminController extends Controller
             $recent = transactions::orderBy('created_at', 'desc')->take('6')->get();
             return view('/admin/main/index', [
                 "selected" => "dashboard",
+                "Title" => 'Dashboard',
                 'user' => $user,
                 'salesCount' => $salesCount,
                 'days' => $days,

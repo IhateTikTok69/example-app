@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\facility;
-use App\Http\Requests\StorefacilityRequest;
-use App\Http\Requests\UpdatefacilityRequest;
+use App\Models\countries;
+use App\Http\Requests\StorecountriesRequest;
+use App\Http\Requests\UpdatecountriesRequest;
 
-class FacilityController extends Controller
+class CountriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class FacilityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorefacilityRequest $request)
+    public function store(StorecountriesRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class FacilityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(facility $facility)
+    public function show(countries $countries)
     {
         //
     }
@@ -43,7 +43,7 @@ class FacilityController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(facility $facility)
+    public function edit(countries $countries)
     {
         //
     }
@@ -51,7 +51,7 @@ class FacilityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatefacilityRequest $request, facility $facility)
+    public function update(UpdatecountriesRequest $request, countries $countries)
     {
         //
     }
@@ -59,7 +59,7 @@ class FacilityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(facility $facility)
+    public function destroy(countries $countries)
     {
         //
     }

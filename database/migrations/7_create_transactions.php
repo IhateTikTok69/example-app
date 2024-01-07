@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id('trans_id');
-            $table->unsignedBigInteger('roomNum')->index();
+            $table->unsignedBigInteger('product_id')->index();
             $table->unsignedBigInteger('user_id')->index();
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('booking_id')->nullable()->unique();
+            $table->string('receipt_id')->nullable()->unique();
             $table->float('bill');
             $table->string('status');
             $table->dateTime('completed_at')->nullable();
             $table->timestamps();
 
             // Foreign Key for 'roomNum'
-            $table->foreign('roomNum')->references('roomNum')->on('rooms');
+            $table->foreign('product_id')->references('product_id')->on('products');
 
             // Foreign Key for 'user_id'
             $table->foreign('user_id')->references('user_id')->on('users');

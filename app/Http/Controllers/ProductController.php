@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreroomsRequest;
-use App\Http\Requests\UpdateroomsRequest;
 use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreproductRequest;
+use App\Http\Requests\UpdateproductRequest;
 
-class RoomsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -87,46 +87,6 @@ class RoomsController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreRoomsRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(product $rooms)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(product $rooms)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateRoomsRequest $request, product $rooms)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(product $rooms)
     {
         //
     }

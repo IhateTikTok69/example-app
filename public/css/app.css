@@ -68,7 +68,7 @@ body{
     background-color:  var(--base-color);
     margin-left: 300px;
     overflow-y: scroll;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 70px);
     width: calc(100vw - 300px);
 }
 .content{
@@ -164,14 +164,13 @@ input[type=checkbox]{
 }
 .full-card{
     padding-left: 20px;
-    padding-top: 10px;
+    padding-top: 20px;
     width: 100%;
     padding-right: 10px;
     background-color: white;
     box-shadow: 0px 0px 20px var(--shadow-color);
     max-height: fit-content;
     padding-bottom: 20px;
-
 }
 .bi-circle-fill{
     margin-left: 70px;
@@ -220,7 +219,12 @@ input:focus {
     height: 200px;
     padding-right: 20px;
 }
-@media only screen and (max-width: 1270px) {
+
+i{
+    font-style: normal;
+}
+
+@media only screen and (max-width: 1281px) {
     .sidePannel{
         display: none;
     }
@@ -237,4 +241,28 @@ input:focus {
         grid-template-columns: 1fr 1fr;
         column-gap: 20px;
     }
+}
+select{
+    padding: 10px;
+    display: block;
+    background-color: var(--base-color);
+    width: 200px;
+}
+.styled{
+    width: 300px;
+    border: 1px solid var(--main-color);
+    padding: 10px;
+}
+.grid{
+    grid-template-columns: 1fr 1fr;
+    row-gap: 30px;
+}
+.submit{
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid var(--shadow-color);
+}
+.submit:hover{
+    background-color: var(--main-color);
+    color: white;
 }
