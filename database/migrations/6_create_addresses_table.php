@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('zipcode');
             $table->string('address_line');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->foreign('city_id')->references('city_id')->on('cities');
+            $table->foreign('country_id')->references('country_id')->on('countries');
         });
     }
 

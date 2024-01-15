@@ -86,7 +86,7 @@
     console.log('{!! json_encode($salesCount) !!}')
     var options = {
       chart: {
-        type: 'line',
+        type: 'bar',
         height: 350,
         zoom: {
             enabled: false
@@ -99,7 +99,7 @@
           enabled: false
         },
       stroke: {
-        curve: 'stepline'
+        curve: 'straight'
       },
       series: [{
         name: 'Revenue $ ',

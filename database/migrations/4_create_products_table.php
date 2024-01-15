@@ -15,17 +15,17 @@ return new class extends Migration
             $table->id('product_id');
             $table->string('item_name');
             $table->integer('price');
-            $table->longText('ietm_desc');
-            $table->unsignedBigInteger('cat_id')->index();
-            $table->unsignedBigInteger('sub_cat_id')->index();
+            $table->longText('item_desc')->nullable();
+            $table->unsignedBigInteger('cat_id')->index()->nullable();
+            $table->unsignedBigInteger('sub_cat_id')->index()->nullable();
             $table->integer('weight');
             $table->integer('height');
             $table->integer('width');
-            $table->integer('lenght');
+            $table->integer('length');
             $table->integer('stock');
             $table->timestamps();
 
-            $table->foreign('cat_id')->references('cat_id')->on('categories')->onDelete('set null');
+            $table->foreign('cat_id')->references('cat_id')->on('categories');
             $table->foreign('sub_cat_id')->references('sub_cat_id')->on('sub_categories')->onDelete('set null');
         });
     }

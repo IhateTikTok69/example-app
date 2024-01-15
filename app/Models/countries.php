@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class countries extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'country_id';
+
+    public function city()
+    {
+        return $this->hasMany(cities::class);
+    }
 }

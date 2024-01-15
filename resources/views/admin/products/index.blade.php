@@ -40,12 +40,11 @@
 
             function fetch_data(page = 1) {
                 $.ajax({
-                    url: '{{ url('admin/rooms/fetchData') }}',
+                    url: '{{ url('admin/products/fetchData') }}',
                     method: 'POST',
                     data: {
                         _token: '{{ csrf_token() }}',
                         page: page,
-                        amenities: amenities
                     },
                     success: function(data) {
                         $('#roomData').html(data);
@@ -76,4 +75,5 @@
         });
 
     </script>
+   
 @endsection

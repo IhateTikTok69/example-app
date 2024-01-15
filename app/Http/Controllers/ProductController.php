@@ -15,22 +15,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $roomsWithFacilities = product::paginate(14);
         //['rooms' => $roomsWithFacilities, 'selected' => 'rooms']
-        return view('/admin/rooms/index', [
-            'selected' => 'rooms',
+        return view('/admin/products/index', [
+            'selected' => 'products',
             "Title" => 'Rooms Info',
         ]);
     }
     public function fetchData(Request $request)
     {
-        $rooms = product::query();
+        $items = product::query();
 
         // Apply amenity filter if provided in the request
         $amenities = $request->input('amenities', []);
 
         if (!empty($amenities)) {
-            $rooms->where(function ($query) use ($amenities) {
+            $items->where(function ($query) use ($amenities) {
                 foreach ($amenities as $amenity) {
                     $query->where($amenity, true);
                 }
@@ -38,13 +37,13 @@ class ProductController extends Controller
         }
 
         // Paginate the results
-        $rooms = $rooms->paginate(10);
+        $items = $items->paginate(10);
 
 
-        return view('/admin/rooms/data', compact('rooms'))->render();
+        return view('/admin/products/data', compact('items'))->render();
     }
 
-    public function NewRoom()
+    public function newProduct()
     {
         return view('/admin/add', [
             "selected" => "add",

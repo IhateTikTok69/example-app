@@ -31,10 +31,12 @@
     </div>
    </div>
   </div>
-  <div class="dark:bg-slate-800 dark:text-white sidePannel pt-32 text-blue-900 font-thin text-base">
+  <div class="dark:bg-slate-800 dark:text-white sidePannel pt-10 text-blue-900 font-thin text-base">
     <a href="/admin/dashboard" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "dashboard") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
       <i class="bi bi-columns-gap mr-2"></i> DASHBOARD</a>
-    <a href="/admin/rooms" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "rooms") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/dashboard" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "financials") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+      <i class="bi bi-bank mr-2"></i> FINANCIAL REPORTS</a>
+    <a href="/admin/products" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "products") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
       <i class="bi bi-door-open mr-2"></i> PRODUCTS</a>
     <a href="/admin/add" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "add") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
       <i class="bi  bi-building-add mr-2"></i> ADD ROOM</a>

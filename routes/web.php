@@ -35,11 +35,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('dashboard/getSales', [AdminController::class, 'getSales'])->name('dashboard.getSales');
         Route::post('dashboard/getRevenue', [AdminController::class, 'getRevenue'])->name('dashboard.getRevenue');
         Route::post('dashboard/getRegister', [AdminController::class, 'getRegister'])->name('dashboard.getRegister');
-        Route::get('rooms', [ProductController::class, 'index'])->name('roomView');
-        Route::post('rooms/delete', [ProductController::class, 'delete']);
-        Route::post('rooms/insert', [ProductController::class, 'insert']);
-        Route::post('rooms/fetchData', [ProductController::class, 'fetchData']);
-        Route::get('add', [ProductController::class, 'NewRoom']);
+        Route::get('products', [ProductController::class, 'index'])->name('roomView');
+        Route::post('products/delete', [ProductController::class, 'delete']);
+        Route::post('products/insert', [ProductController::class, 'insert']);
+        Route::post('products/fetchData', [ProductController::class, 'fetchData']);
+        Route::get('add', [ProductController::class, 'newProduct']);
         Route::get('transactions', [TransactionsController::class, 'index']);
         Route::get('modify', [modifyController::class, 'index']);
     });

@@ -25,7 +25,7 @@ class transactions extends Model
     {
         return $this->belongsTo(users::class);
     }
-    public function room()
+    public function product()
     {
         return $this->belongsTo(product::class);
     }

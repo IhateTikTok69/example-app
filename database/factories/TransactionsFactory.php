@@ -20,7 +20,7 @@ class TransactionsFactory extends Factory
         $startDate = Carbon::now()->subMonth();
         $endDate = Carbon::now();
         return [
-            'roomNum' => $this->faker->numberBetween(1, 20),
+            'product_id' => $this->faker->numberBetween(1, 20),
             'user_id' => $this->faker->numberBetween(1, 20),
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),

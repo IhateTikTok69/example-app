@@ -1,0 +1,15 @@
+SELECT 
+    users.user_id, 
+    users.name,
+    SUM(CASE WHEN transactions.status ='completed' OR transactions.status = 'paid' THEN 1 ELSE 0 END) as 'Num. of transactions',
+    CASE
+    	WHEN SUM(CASE WHEN transactions.status ='completed' OR transactions.status = 'paid' THEN 1 ELSE 0 END) > 0 THEN SUM(transactions.bill)
+        ELSE 0
+    END as 'total SPENDING'
+FROM 
+	users
+JOIN 
+	transactions ON users.user_id = transactions.trans_id
+GROUP BY
+	users.user_id, users.name
+//
