@@ -12,7 +12,13 @@
             </div>
             <button id="salesDateFilter" class="date-filter absolute right-0"><i class="bi bi-three-dots"></i></button>
             <p class="text-lg "> Sales | <i class="salesIndicator text-slate-400">Today</i> </p> 
-            <div class="flex mt-2 "> <div class="aspect-square text-4xl w-16 text-blue-400 p-4 rounded-full bg-blue-50"><img src="/assets/receipt.png" class="w-20 mr-3" alt=""></div><div id="salesData" class="text-2xl pt-3 pl-2 font-extrabold">  </div></div>
+            <div class="flex mt-2 "> 
+              <div class="aspect-square text-4xl w-16 text-blue-400 p-4 rounded-full bg-blue-50">
+                <img src="/assets/receipt.png" class="w-20 mr-3" alt="">
+              </div>
+              <div id="salesData" class="text-2xl pt-3 pl-2"> </div>
+              
+            </div>
           </div>
           <div class="card-1 dark:bg-slate-800 dark:text-white relative">
             <div id="revenueChoice" class="dateFilterChoice absolute right-0 mt-5 mr-2 text-slate-700 p-2 text-sm">
@@ -23,7 +29,12 @@
             </div>
             <button id="revenueDateFilter" class="date-filter absolute right-0"><i class="bi bi-three-dots"></i></button>
             <p class="text-lg ">Revenue | <i class="revIndicator text-slate-400">Today</i></p>
-            <div class="flex mt-2"><div class="aspect-square text-4xl w-16 text-green-400 p-4 rounded-full bg-green-100"><img src="/assets/currency-dollar.png" class="w-32" alt=""></div><div id="revData" class="text-2xl pt-3 pl-2 font-extrabold"></div></div>
+            <div class="flex mt-2">
+              <div class="aspect-square text-4xl w-16 text-green-400 p-4 rounded-full bg-green-100">
+                <img src="/assets/currency-dollar.png" class="w-32" alt="">
+              </div>
+              <div id="revData" class="text-2xl pt-3 pl-2 "></div>
+            </div>
           </div>
           <div class="card-1 dark:bg-slate-800 dark:text-white relative">
             <div id="userChoice" class="dateFilterChoice absolute right-0 mt-5 mr-2 text-slate-700 p-2 text-sm">
@@ -34,7 +45,11 @@
             </div>
             <button id="userDateFilter" class="date-filter absolute right-0"><i class="bi bi-three-dots"></i></button>
             <p class="text-lg ">Customers  | <i class=" userIndicator text-slate-400">Today</i></p>
-            <div class="flex mt-2"><div class="aspect-square text-4xl w-16 text-green-400 p-4 pt-5 rounded-full bg-orange-100"><img src="/assets/people.png" class="w-10 mr-3" alt=""></div><div id="userData" class="text-2xl pt-3 pl-2 font-extrabold"> </div></div>
+            <div class="flex mt-2">
+              <div class="aspect-square text-4xl w-16 text-green-400 p-4 pt-5 rounded-full bg-orange-100">
+                <img src="/assets/people.png" class="w-10 mr-3" alt="">
+              </div><div id="userData" class="text-2xl pt-3 pl-2"> </div>
+            </div>
           </div>
         </div>
         <div class="card-2 dark:bg-slate-800 dark:text-white h-fit  pl-10px">
@@ -43,7 +58,24 @@
         </div>
         <div class="card-2 dark:bg-slate-800 dark:text-white">
           <p class="text-lg ">Monthly | <i class=" text-slate-400">Top Selling </i> </p>
-          
+          <table class=" text-slate-950 mt-5">
+            <tr>
+              <th>Preview</th>
+              <th>Item Name</th>
+              <th class=" w-20">Price</th>
+              <th class=" w-20">Sold</th>
+              <th class=" w-20">Revenue</th>
+            </tr>
+            @foreach ($topSelling as $index => $topItems)
+                <tr>
+                  <td class="w-24"> <img class="w-20" src="/assets/products/{{$topItems->prevImg}}.jpg" alt=""></td>
+                  <td class="text-blue-600 cursor-pointer">{{$topItems->item_name}} </td>
+                  <td>$ {{$topItems->price}} </td>
+                  <td>{{$topItems->total_sold}} </td>
+                  <td>$ {{$topItems->total_bill}} </td>
+                </tr>
+            @endforeach
+          </table>
         </div>
       </div>
       <div class="content-2">
@@ -66,6 +98,7 @@
         </div>
         <div class="card-2 dark:bg-slate-800 dark:text-white">
           <h1> website Trafic</h1>
+          <div id="trafficChart"></div>
         </div>
         <div class="card-2 dark:bg-slate-800 dark:text-white"></div>
       </div>  
@@ -95,8 +128,24 @@
           enabled: false
         }
       },
-      dataLabels: {
-          enabled: false
+      plotOptions: {
+          bar: {
+            borderRadius: 2,
+            dataLabels: {
+              position: 'top', // top, center, bottom
+            },
+          }
+        },
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return "$" + val;
+          },
+          offsetY: -20,
+          style: {
+            fontSize: '12px',
+            colors: ["#304758"]
+          }
         },
       stroke: {
         curve: 'straight'
@@ -116,6 +165,29 @@
 
     var chart = new ApexCharts(document.querySelector("#myChart"), options);
 
+    chart.render();
+</script>
+<script>
+    var options = {
+    series: [44, 55, 13, 43, 22],
+    chart: {
+      height: 350,
+      type: 'pie',
+    },
+    theme: {
+      palette: 'palette7'
+    },
+    labels: ['Affiliate Links', 'Social Media', 'Google Searches', 'Direct', 'Advertisements'],
+    legend: {
+          position: 'bottom',
+          markers: {
+            width: 20, // Set the width of the legend indicator
+            height: 10, // Set the height of the legend indicator
+        },
+      }, 
+    };
+
+    var chart = new ApexCharts(document.querySelector("#trafficChart"), options);
     chart.render();
 </script>
 

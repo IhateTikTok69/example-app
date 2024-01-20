@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('width');
             $table->integer('length');
             $table->integer('stock');
+            $table->string('prevImg')->nullable();
             $table->timestamps();
 
             $table->foreign('cat_id')->references('cat_id')->on('categories');

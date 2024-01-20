@@ -16,7 +16,7 @@
 
  <body class="m-0 text-blue-950">
   <div class="py-4 navbar dark:bg-slate-800 dark:text-white dark:shadow-md dark:shadow-slate-950">
-   <a href="#" class="text-2xl font-bold text-blue-600 dark:text-white">ADMIN PANNEL</a> <button class="ml-10 text-3xl"><i class="bi bi-list"></i></button>
+   <a href="#" class="text-2xl font-bold text-blue-600 dark:text-white">PLACEHOLDER</a> <button class="ml-10 text-3xl"><i class="bi bi-list"></i></button>
    <div class="userArea">
     <button id="dropdown-1" class="float-right ps-1 py-1 flex"> {{$user->name}} <img class="mt-3 ml-1 w-3 h-2" src="/assets/drop.png" alt=""></button>
     <button id="dropdown-1" class="adminProfile w-10"><img class="rounded-full" src="/assets/usr/rick.webp" alt=""></button>
@@ -32,28 +32,28 @@
    </div>
   </div>
   <div class="dark:bg-slate-800 dark:text-white sidePannel pt-10 text-blue-900 font-thin text-base">
-    <a href="/admin/dashboard" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "dashboard") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/dashboard" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "dashboard") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-columns-gap mr-2"></i> DASHBOARD</a>
-    <a href="/admin/dashboard" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "financials") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/dashboard" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "financials") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-bank mr-2"></i> FINANCIAL REPORTS</a>
-    <a href="/admin/products" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "products") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/products" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "products") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-door-open mr-2"></i> PRODUCTS</a>
-    <a href="/admin/add" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "add") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/add" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "add") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi  bi-building-add mr-2"></i> ADD ROOM</a>
-    <a href="/admin/transactions" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "transactions") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/transactions" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "transactions") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-receipt mr-2"></i> TRANSCTIONS</a>
-    <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "modify") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "modify") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-pencil-square mr-2"></i> MODIFY</a>
-    <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "modify") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "modify") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-bag-plus mr-2"></i> PURCHASE</a>
     <hr class="">
-    <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "profile") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "profile") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-person-circle mr-2"></i> PROFILE</a>
-    <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "register") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "register") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-person-fill-add mr-2"></i> REGISTER </a>
-    <a href="/admin/login" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "faq") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/login" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "faq") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-question-circle-fill mr-2"></i> F.A.Q</a>
-    <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "profile") ? 'selected bg-blue-100 dark:bg-slate-500 font-bold dark:text-white text-blue-500':''}}">
+    <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "profile") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-sliders mr-2"></i>SETTINGS</a>
   </div> 
   

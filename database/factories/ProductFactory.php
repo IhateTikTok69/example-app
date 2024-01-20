@@ -23,7 +23,7 @@ class ProductFactory extends Factory
         $cat = categories::inRandomOrder()->first();
         $sub = sub_categories::inRandomOrder()->first();
         return [
-            'item_name' => fake()->word(),
+            'item_name' => fake()->domainName(),
             'price' => $this->faker->numberBetween(20, 300),
             'cat_id' => $cat->cat_id,
             'sub_cat_id' => $sub->sub_cat_id,
@@ -33,7 +33,7 @@ class ProductFactory extends Factory
             'width' => $this->faker->numberBetween(1, 10),
             'length' => $this->faker->numberBetween(1, 10),
             'stock' => $this->faker->numberBetween(1, 10),
-
+            'prevImg' => $this->faker->numberBetween(1, 10),
         ];
     }
 }
