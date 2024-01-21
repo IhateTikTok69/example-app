@@ -31,17 +31,18 @@
     </div>
    </div>
   </div>
-  <div class="dark:bg-slate-800 dark:text-white sidePannel pt-10 text-blue-900 font-thin text-base">
+  <div class="dark:bg-slate-800 dark:text-white sidePannel pt-10 text-slate-900 font-thin text-base">
     <a href="/admin/dashboard" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "dashboard") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-columns-gap mr-2"></i> DASHBOARD</a>
-    <a href="/admin/dashboard" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "financials") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
-      <i class="bi bi-bank mr-2"></i> FINANCIAL REPORTS</a>
-    <a href="/admin/products" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "products") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
-      <i class="bi bi-door-open mr-2"></i> PRODUCTS</a>
-    <a href="/admin/add" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "add") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
-      <i class="bi  bi-building-add mr-2"></i> ADD ROOM</a>
+    <div class="idk py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 {{($selected === 'products' || $selected === "add") ?' border-l-2 border-blue-700':''}}">
+      <i class="bi bi-box2-heart mr-2"></i>  <span>PRODUCTS</span>
+      <a href="/admin/products" class=" py-2 ps-3 text-left text-sm  h-15 block ml-5 m-1 choice {{($selected === "products") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
+        <i class="bi bi-list-columns mr-2"></i> PRODUCT LIST</a>
+      <a href="/admin/add" class=" py-2 ps-3 text-left text-sm  h-15 block ml-5 m-1 choice {{($selected === "add") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
+        <i class="bi  bi-building-add mr-2 "></i> NEW PRODUCT</a>
+    </div>
     <a href="/admin/transactions" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "transactions") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
-      <i class="bi bi-receipt mr-2"></i> TRANSCTIONS</a>
+      <i class="bi bi-list-check mr-2"></i> ORDERS</a>
     <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "modify") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
       <i class="bi bi-pencil-square mr-2"></i> MODIFY</a>
     <a href="/admin/modify" class=" py-2 ps-3 text-left w-64 h-15 block ml-5 m-1 choice {{($selected === "modify") ? 'selected bg-blue-100 dark:bg-slate-500  dark:text-white text-blue-500':''}}">
@@ -60,7 +61,7 @@
   <div class="containers dark:bg-slate-400">
     <section class="content">
     <h1 class="text-2xl text-blue-800">{{$Title}}</h1>
-    <p class="cursor-default text-black"><i class="text-slate-400 dark:text-slate-50">Home</i> /{{$selected}} </p>
+    <p class="cursor-default text-black"><a class="text-slate-400 dark:text-slate-50 cursor-pointer">Home</a> / {{$selected}} </p>
     @yield('contents')
     </section>
     

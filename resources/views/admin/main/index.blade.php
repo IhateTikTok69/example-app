@@ -100,7 +100,6 @@
           <h1> website Trafic</h1>
           <div id="trafficChart"></div>
         </div>
-        <div class="card-2 dark:bg-slate-800 dark:text-white"></div>
       </div>  
     </div>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

@@ -15,7 +15,7 @@ class TransactionsController extends Controller
     {
         return view('/admin/trans', [
             "selected" => "transactions",
-            "Title" => 'Transactions Info',
+            "Title" => 'Transactions History',
         ]);
     }
 

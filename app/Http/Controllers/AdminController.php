@@ -33,7 +33,7 @@ class AdminController extends Controller
                     $query->where('status', 'paid')
                         ->orWhere('status', 'completed');
                 })
-                ->orderBy('created_at')->get() // Sort by created_at in ascending order
+                ->orderBy('created_at')->get()
                 ->groupBy(function ($sales) {
                     return Carbon::parse($sales->created_at)->format('Y/m/d');
                 });
