@@ -261,12 +261,14 @@ select{
     width: 200px;
 }
 .styled{
-    width: 300px;
+    width: 100%;
     border: 1px solid var(--main-color);
     padding: 10px;
+    height: 35px;
+    border-radius: 5px;
 }
 .grid{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     row-gap: 30px;
 }
 .submit{
@@ -277,4 +279,19 @@ select{
 .submit:hover{
     background-color: var(--main-color);
     color: white;
+}
+.stylized-File{
+    height: 150px;
+    width: 150px;
+    border: 2px dashed lightgrey;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: all .1s ease;
+}
+.stylized-File:focus, .stylized-File:active{
+    border: 1px solid lightblue;
+}
+.stylized-File:hover{
+    border: 2px dashed var(--main-color);
 }
