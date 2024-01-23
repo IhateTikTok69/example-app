@@ -281,6 +281,8 @@ select{
     color: white;
 }
 .stylized-File{
+    text-align: center;
+    display: inline flow-root;
     height: 150px;
     width: 150px;
     border: 2px dashed lightgrey;
@@ -291,6 +293,7 @@ select{
 }
 .stylized-File:focus, .stylized-File:active{
     border: 1px solid lightblue;
+    background-color: var(--shadow-color);
 }
 .stylized-File:hover{
     border: 2px dashed var(--main-color);

@@ -11,10 +11,8 @@ $(document).ready(function () {
 
         $(".choice").removeClass("selected");
         $(this).addClass("selected");
-        console.log(selectedID);
     });
     $("#dropdown-1").click(function () {
-        console.log("COCK");
         if ($(".dropdown-user").hasClass("droped")) {
             $(".dropdown-user").removeClass("droped");
         } else {
@@ -44,7 +42,6 @@ $(document).ready(function () {
         } else {
             $("#salesChoice").addClass("active");
         }
-        console.log("cock");
     });
     $("#revenueDateFilter").click(function () {
         if ($("#revenueChoice").hasClass("active")) {
@@ -52,7 +49,6 @@ $(document).ready(function () {
         } else {
             $("#revenueChoice").addClass("active");
         }
-        console.log("cock");
     });
     $("#userDateFilter").click(function () {
         if ($("#userChoice").hasClass("active")) {
@@ -60,7 +56,6 @@ $(document).ready(function () {
         } else {
             $("#userChoice").addClass("active");
         }
-        console.log("cock");
     });
 
     $(document).on("click", function (event) {
@@ -73,7 +68,6 @@ $(document).ready(function () {
         ) {
             // Clicked outside the dropdown
             dropdownContent.removeClass("active");
-            console.log("1212"); // Or remove the 'active' class
         }
     });
 });

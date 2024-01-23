@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\categories;
 use App\Http\Requests\StorecategoriesRequest;
 use App\Http\Requests\UpdatecategoriesRequest;
+use App\Models\sub_categories;
 
 class CategoriesController extends Controller
 {
@@ -13,7 +14,14 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = categories::pluck('category', 'id');
+        return view('your_view_name', compact('categories'));
+    }
+
+    public function getSubCategories($categoryId)
+    {
+        $subCategories = sub_categories::where('cat_id', $categoryId)->pluck('sub_category', 'sub_cat_id');
+        return response()->json($subCategories);
     }
 
     /**

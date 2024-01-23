@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         transactions::factory(500)->create();
         admin::create([
             'name' => fake()->name(),
-            'username' => 'johncock',
+            'username' => 'user',
             'password' => bcrypt("pas123"),
             'path' => 'rick.webp',
         ]);

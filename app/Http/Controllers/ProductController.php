@@ -47,7 +47,7 @@ class ProductController extends Controller
     {
         return view('/admin/add', [
             "selected" => "add",
-            "Title" => 'New Rooms',
+            "Title" => 'Add New Item',
         ]);
     }
     public function delete(Request $request)
@@ -60,25 +60,42 @@ class ProductController extends Controller
     }
     public function insert(Request $request)
     {
+        var_dump($file1 = $request->file('previmg'));
+        $latestProduct = Product::latest('created_at')->first();
+        $latestID = $latestProduct->product_id + 1;
+        $itemName = $request->input('name');
         $price = $request->input('price');
-        $availability = $request->input('availability');
-        $type = $request->input('type');
-        $wifi = $request->input('wifi');
-        $gym = $request->input('gym');
-        $breakfast = $request->input('breakfast');
-        $smoking = $request->input('smoking');
-        $park = $request->input('park');
+        if ($request->input('category') === null) {
+            $category = 1;
+        } else {
+            $category = $request->input('category');
+        }
+
+        if ($request->input('sub-category') === null) {
+            $sub_category = 1;
+        } else {
+            $sub_category = $request->input('sub-category');
+        }
+        $item_desc = $request->input('item_desc');
+        $height = $request->input('Height');
+        $width = $request->input('Width');
+        $length = $request->input('Length');
+        $weight = $request->input('weight');
+        $stock = $request->input('stock');
+
+        //so it's easy to read
+        $file1 = $request->file('previmg');
+        $previmg = time() . '_' . $file1->getClientOriginalName();
+        $file2 = $request->file('img1');
+        $file3 = $request->file('img2');
+        $file4 = $request->file('img3');
+        $file5 = $request->file('img4');
         $pool = $request->input('pool');
+
         product::create([
+            'item_name' => $itemName,
             'price' => $price,
-            'availability' => $availability,
-            'roomType' => $type,
-            'wifi' => $wifi,
-            'gym' => $gym,
-            'breakfast' => $breakfast,
-            'smoking' => $smoking,
-            'park' => $park,
-            'pool' => $pool,
+            'item_desc' => $item_desc,
         ]);
         return back();
     }
