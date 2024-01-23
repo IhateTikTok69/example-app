@@ -13,7 +13,7 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        return view('/admin/trans', [
+        return view('/admin/orders/index', [
             "selected" => "transactions",
             "Title" => 'Transactions History',
         ]);

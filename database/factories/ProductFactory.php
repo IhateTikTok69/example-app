@@ -33,7 +33,7 @@ class ProductFactory extends Factory
             'width' => $this->faker->numberBetween(1, 10),
             'length' => $this->faker->numberBetween(1, 10),
             'stock' => $this->faker->numberBetween(1, 10),
-            'prevImg' => $this->faker->numberBetween(1, 10),
+            'prevImg' => $this->faker->numberBetween(1, 10) . '.jpg',
         ];
     }
 }

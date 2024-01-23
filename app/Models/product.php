@@ -9,6 +9,7 @@ class product extends Model
 {
     use HasFactory;
     protected $primaryKey = 'product_id';
+    protected $guarded  = [];
 
     public function country()
     {

@@ -2,7 +2,7 @@
 
 @section('contents')
 <section id="trans" class="content">
-    <div class="seperator">
+    <div class="card-2 w-full">
         
     </div>
 </section>

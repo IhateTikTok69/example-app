@@ -7,13 +7,15 @@
         @csrf
         <div class="full-card w-full rounded-md text-md text-slate-600 mb-5 pr-32">
           <div class="grid">
-            <i>Product Name : </i><input id="" type="text" class="styled " name="name" placeholder="Detailed Product Name">
-            <i>Price ($) : <br></i><input id="" type="text" class="styled w-1/2" name="price" placeholder="Numbers Without Comma">
-            <i>Category : <br></i><select name="category" id=""> Select
+            <i>Product Name : </i><input id="" type="text" class="styled " name="name" placeholder="Detailed Product Name" required>
+            <i>Price ($) : <br></i><input id="" type="text" class="styled w-1/2" name="price" placeholder="Numbers Without Comma" required> 
+            <i>Category : <br></i><select name="category" id="" required> Select
               <Option disabled> Select Category</Option>
+              <Option value="1"> Select Category</Option>
             </select>
-            <i>Sub-category : <br></i><select name="sub-category" id=""> Select
+            <i>Sub-category : <br></i><select name="sub-category" id="" required> Select
               <Option disabled> Select Category</Option>
+              <Option value="1"> Select Category</Option>
             </select>
           </div>
         </div>
@@ -26,7 +28,7 @@
               <img class="mt-2 ml-2 opacity-90 h-32 w-32 hidden absolute" id="preview-1" src="#" alt="">
               <i id="" class="bi bi-image mt-6"></i>
               <p>Main Preview</p>
-              <input href='1' id="file-1" type="file" name="previmg" class="hidden" />
+              <input href='1' id="file-1" type="file" name="previmg" class="hidden" required/>
             </label>
             <label for="file-2" class="stylized-File relative">
               <img class="mt-2 ml-2 opacity-80 h-32 w-32 hidden absolute" id="preview-2" src="#" alt="">
@@ -59,12 +61,12 @@
           <i>Product Name :</i><a class="cursor-pointer">+ new Variant</a>
           <i>Dimentions (Height + Width + Length) :</i>
           <div>
-            <input id="" type="text" class="styled w-24" name="Height" placeholder="Height"> x
-            <input id="" type="text" class="styled w-24" name="Width" placeholder="Width"> x
-            <input id="" type="text" class="styled w-24" name="Length" placeholder="Length">
+            <input id="" type="text" class="styled w-24" name="Height" placeholder="Height" required> x
+            <input id="" type="text" class="styled w-24" name="Width" placeholder="Width" required> x
+            <input id="" type="text" class="styled w-24" name="Length" placeholder="Length" required>
           </div>
-          <i>Weight (grams) :</i> <input type="text" class="styled w-1/2" name="weight" id="" placeholder="weight in grams">
-          <i>Item Stock :</i> <input type="text" class="styled w-1/2" name="stock" id="" placeholder="Number of items available for sale">
+          <i>Weight (grams) :</i> <input type="text" class="styled w-1/2" name="weight" id="" placeholder="weight in grams" required>
+          <i>Item Stock :</i> <input type="text" class="styled w-1/2" name="stock" id="" placeholder="Number of items available for sale" required>
         </div><br>
         <input type="submit" class="submit float-right mt-6 mr-11" value="SUBMIT">
         </div>

@@ -68,7 +68,7 @@
             </tr>
             @foreach ($topSelling as $index => $topItems)
                 <tr>
-                  <td class="w-24"> <img class="w-20" src="/assets/products/{{$topItems->prevImg}}.jpg" alt=""></td>
+                  <td class="w-24"> <img class="w-20" src="/assets/products/{{$topItems->prevImg}}" alt=""></td>
                   <td class="text-blue-600 cursor-pointer">{{$topItems->item_name}} </td>
                   <td>$ {{$topItems->price}} </td>
                   <td>{{$topItems->total_sold}} </td>

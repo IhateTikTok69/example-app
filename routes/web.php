@@ -24,7 +24,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', function () {
     return view('home', []);
 });
-
+Route::get('/product/{product_id}', [ProductController::class, 'retrieveProductInfo'])->name('products.show');
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('login/', [LoginCrontroller::class, 'index'])->name('adminLogin');
     Route::post('login/', [LoginCrontroller::class, 'authenticate']);

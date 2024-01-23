@@ -7,12 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreproductRequest;
 use App\Http\Requests\UpdateproductRequest;
+use App\Models\product_images;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function retrieveProductInfo($product_id)
+    {
+        $product = Product::find($product_id);
+        $img = product_images::select('path')->where('product_id', $product_id)->get();
+        return view('/product/index', compact('product', 'img'));
+    }
     public function index()
     {
         //['rooms' => $roomsWithFacilities, 'selected' => 'rooms']
@@ -24,22 +29,7 @@ class ProductController extends Controller
     public function fetchData(Request $request)
     {
         $items = product::query();
-
-        // Apply amenity filter if provided in the request
-        $amenities = $request->input('amenities', []);
-
-        if (!empty($amenities)) {
-            $items->where(function ($query) use ($amenities) {
-                foreach ($amenities as $amenity) {
-                    $query->where($amenity, true);
-                }
-            });
-        }
-
-        // Paginate the results
         $items = $items->paginate(10);
-
-
         return view('/admin/products/data', compact('items'))->render();
     }
 
@@ -60,21 +50,20 @@ class ProductController extends Controller
     }
     public function insert(Request $request)
     {
-        var_dump($file1 = $request->file('previmg'));
         $latestProduct = Product::latest('created_at')->first();
         $latestID = $latestProduct->product_id + 1;
         $itemName = $request->input('name');
         $price = $request->input('price');
         if ($request->input('category') === null) {
-            $category = 1;
+            $cat_id = 1;
         } else {
-            $category = $request->input('category');
+            $cat_id = $request->input('category');
         }
 
         if ($request->input('sub-category') === null) {
-            $sub_category = 1;
+            $sub_cat_id = 1;
         } else {
-            $sub_category = $request->input('sub-category');
+            $sub_cat_id = $request->input('sub-category');
         }
         $item_desc = $request->input('item_desc');
         $height = $request->input('Height');
@@ -83,21 +72,65 @@ class ProductController extends Controller
         $weight = $request->input('weight');
         $stock = $request->input('stock');
 
-        //so it's easy to read
         $file1 = $request->file('previmg');
         $previmg = time() . '_' . $file1->getClientOriginalName();
-        $file2 = $request->file('img1');
-        $file3 = $request->file('img2');
-        $file4 = $request->file('img3');
-        $file5 = $request->file('img4');
-        $pool = $request->input('pool');
+        $file1->move(public_path('assets/products'), $previmg);
 
         product::create([
             'item_name' => $itemName,
             'price' => $price,
             'item_desc' => $item_desc,
+            'cat_id' => $cat_id,
+            'sub_cat_id' => $sub_cat_id,
+            'weight' => $weight,
+            'stock' => $stock,
+            'height' => $height,
+            'width' => $width,
+            'length' => $length,
+            'previmg' => $previmg,
         ]);
-        return back();
+
+        $file2 = $request->file('img1');
+        if ($file2 != null) {
+            $product_id = $latestID;
+            $path = time() . '_' . $file2->getClientOriginalName();
+            $file2->move(public_path('assets/products'), $path);
+            product_images::create([
+                'product_id' => $product_id,
+                'path' => $path,
+            ]);
+        }
+        $file3 = $request->file('img2');
+        if ($file3 != null) {
+            $product_id = $latestID;
+            $path = time() . '_' . $file3->getClientOriginalName();
+            $file3->move(public_path('assets/products'), $path);
+            product_images::create([
+                'product_id' => $product_id,
+                'path' => $path,
+            ]);
+        }
+        $file4 = $request->file('img3');
+        if ($file4 != null) {
+            $product_id = $latestID;
+            $path = time() . '_' . $file4->getClientOriginalName();
+            $file4->move(public_path('assets/products'), $path);
+            product_images::create([
+                'product_id' => $product_id,
+                'path' => $path,
+            ]);
+        }
+        $file5 = $request->file('img4');
+        if ($file5 != null) {
+            $product_id = $latestID;
+            $path = time() . '_' . $file5->getClientOriginalName();
+            $file5->move(public_path('assets/products'), $path);
+            product_images::create([
+                'product_id' => $product_id,
+                'path' => $path,
+            ]);
+        }
+        return redirect()->route('products.show', ['product_id' => $latestID])->with('success', 'Product updated successfully.');
     }
     /**
      * Show the form for creating a new resource.
