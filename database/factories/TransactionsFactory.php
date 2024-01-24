@@ -25,8 +25,9 @@ class TransactionsFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'phone' => fake()->phoneNumber(),
+            'receipt_id' => fake()->numerify('ORDER-#######'),
             'bill' => $this->faker->numberBetween(30, 60),
-            'status' => $this->faker->randomElement(['created', 'paid', 'completed', 'canceled']),
+            'status' => $this->faker->randomElement(['created', 'paid', 'completed', 'canceled', 'in-shipment']),
             'created_at' => $this->faker->dateTimeBetween($startDate, $endDate),
         ];
     }

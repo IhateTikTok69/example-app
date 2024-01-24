@@ -15,7 +15,7 @@
         <td class="py-2 px-4 action">
             <a class="w-10 text-xl bg-green-300 text-orange-100 rounded-sm" href="http://127.0.0.1:8000/product/{{$item->product_id}}"><i class="bi bi-eye"></i></a>
             <button class="w-10 text-xl bg-blue-300 text-white rounded-sm"><i class="bi bi-pencil-square"></i></button>
-            <form action="/admin/rooms/delete" method="POST">
+            <form action="/admin/products/delete" method="POST">
                 @csrf
                 <input type="hidden" name="id" value="{{$item->product_id}}">
                 <button class="w-10 text-xl bg-red-500 text-white rounded-sm"><i class="bi bi-trash"></i></button>

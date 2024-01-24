@@ -41,6 +41,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('products/fetchData', [ProductController::class, 'fetchData']);
         Route::get('add', [ProductController::class, 'newProduct']);
         Route::get('transactions', [TransactionsController::class, 'index']);
+        Route::post('transactions/GetAllTransactions', [TransactionsController::class, 'GetAllTransactions']);
+        Route::post('transactions/GetNewTransactions', [TransactionsController::class, 'GetNewTransactions']);
+        Route::post('transactions/getPaidOrders', [TransactionsController::class, 'getPaidOrders']);
+        Route::post('transactions/GetInShipment', [TransactionsController::class, 'GetInShipment']);
+        Route::post('transactions/GetCompleted', [TransactionsController::class, 'GetCompleted']);
+        Route::post('transactions/GetCanceled', [TransactionsController::class, 'GetCanceled']);
         Route::get('modify', [modifyController::class, 'index']);
     });
 });

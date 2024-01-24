@@ -55,17 +55,6 @@
                     }
                 });
             }
-
-            $('input[type="checkbox"]').change(function() {
-                // Update amenities when a checkbox changes
-                amenities = $('input[name="amenities[]"]:checked').map(function() {
-                    return $(this).val();
-                }).get();
-
-                fetch_data(1); // Fetch data with updated amenities
-                console.log(amenities);
-            });
-
             $(document).on('click', '.pagination a', function(event) {
                 event.preventDefault();
                 var page = $(this).attr('href').split('page=')[1];

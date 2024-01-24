@@ -1,5 +1,55 @@
 $(document).ready(function () {
     const savedTheme = localStorage.getItem("theme");
+    $(".allTrans").addClass("selected-filter");
+    $("#allTrans").removeClass("hidden");
+    $(".allTrans").click(function () {
+        if ($("#allTrans").hasClass("hidden")) {
+            $(".checker").removeClass("selected-filter");
+            $(".allTrans").addClass("selected-filter");
+            $(".identifier").addClass("hidden");
+            $("#allTrans").removeClass("hidden");
+        }
+    });
+    $(".newTrans").click(function () {
+        if ($("#newTrans").hasClass("hidden")) {
+            $(".checker").removeClass("selected-filter");
+            $(".newTrans").addClass("selected-filter");
+            $(".identifier").addClass("hidden");
+            $("#newTrans").removeClass("hidden");
+        }
+    });
+    $(".readyToShip").click(function () {
+        if ($("#readyToShip").hasClass("hidden")) {
+            $(".checker").removeClass("selected-filter");
+            $(".readyToShip").addClass("selected-filter");
+            $(".identifier").addClass("hidden");
+            $("#readyToShip").removeClass("hidden");
+        }
+    });
+    $(".inShipment").click(function () {
+        if ($("#inShipment").hasClass("hidden")) {
+            $(".checker").removeClass("selected-filter");
+            $(".inShipment").addClass("selected-filter");
+            $(".identifier").addClass("hidden");
+            $("#inShipment").removeClass("hidden");
+        }
+    });
+    $(".completed").click(function () {
+        if ($("#completed").hasClass("hidden")) {
+            $(".checker").removeClass("selected-filter");
+            $(".completed").addClass("selected-filter");
+            $(".identifier").addClass("hidden");
+            $("#completed").removeClass("hidden");
+        }
+    });
+    $(".canceled").click(function () {
+        if ($("#canceled").hasClass("hidden")) {
+            $(".checker").removeClass("selected-filter");
+            $(".canceled").addClass("selected-filter");
+            $(".identifier").addClass("hidden");
+            $("#canceled").removeClass("hidden");
+        }
+    });
     if (savedTheme) {
         applyTheme(savedTheme);
     }

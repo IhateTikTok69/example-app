@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\transactions;
+use App\Models\product;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoretransactionsRequest;
 use App\Http\Requests\UpdatetransactionsRequest;
+use Faker\Factory as Faker;
 
 class TransactionsController extends Controller
 {
@@ -22,9 +25,58 @@ class TransactionsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function GetAllTransactions(Request $request)
     {
-        //
+        $items = transactions::select('transactions.bill', 'products.item_name', 'products.prevImg', 'transactions.status', 'transactions.created_at', 'transactions.updated_at', 'transactions.receipt_id', 'transactions.name')
+            ->join('products', 'transactions.product_id', 'products.product_id')
+            ->orderBy('updated_at', 'asc');
+        $items = $items->paginate(5);
+        return view('/admin/orders/allData', compact('items'))->render();
+    }
+    public function GetNewTransactions(Request $request)
+    {
+        $items = transactions::select('transactions.bill', 'products.item_name', 'products.prevImg', 'transactions.status', 'transactions.created_at', 'transactions.updated_at', 'transactions.receipt_id', 'transactions.name')
+            ->join('products', 'transactions.product_id', 'products.product_id')
+            ->where('transactions.status', 'created')
+            ->orderBy('updated_at', 'asc');
+        $items = $items->paginate(5);
+        return view('/admin/orders/newOrders', compact('items',))->render();
+    }
+    public function getPaidOrders(Request $request)
+    {
+        $items = transactions::select('transactions.bill', 'products.item_name', 'products.prevImg', 'transactions.status', 'transactions.created_at', 'transactions.updated_at', 'transactions.receipt_id', 'transactions.name')
+            ->join('products', 'transactions.product_id', 'products.product_id')
+            ->where('transactions.status', 'paid')
+            ->orderBy('updated_at', 'asc');
+        $items = $items->paginate(5);
+        return view('/admin/orders/paidOrders', compact('items',))->render();
+    }
+    public function GetInShipment(Request $request)
+    {
+        $items = transactions::select('transactions.bill', 'products.item_name', 'products.prevImg', 'transactions.status', 'transactions.created_at', 'transactions.updated_at', 'transactions.receipt_id', 'transactions.name')
+            ->join('products', 'transactions.product_id', 'products.product_id')
+            ->where('transactions.status', 'in-shipment')
+            ->orderBy('updated_at', 'asc');
+        $items = $items->paginate(5);
+        return view('/admin/orders/inShipment', compact('items',))->render();
+    }
+    public function GetCompleted(Request $request)
+    {
+        $items = transactions::select('transactions.bill', 'products.item_name', 'products.prevImg', 'transactions.status', 'transactions.created_at', 'transactions.updated_at', 'transactions.receipt_id', 'transactions.name')
+            ->join('products', 'transactions.product_id', 'products.product_id')
+            ->where('transactions.status', 'completed')
+            ->orderBy('updated_at', 'asc');
+        $items = $items->paginate(5);
+        return view('/admin/orders/completedOrders', compact('items',))->render();
+    }
+    public function GetCanceled(Request $request)
+    {
+        $items = transactions::select('transactions.bill', 'products.item_name', 'products.prevImg', 'transactions.status', 'transactions.created_at', 'transactions.updated_at', 'transactions.receipt_id', 'transactions.name')
+            ->join('products', 'transactions.product_id', 'products.product_id')
+            ->where('transactions.status', 'canceled')
+            ->orderBy('updated_at', 'asc');
+        $items = $items->paginate(5);
+        return view('/admin/orders/canceledOrders', compact('items',))->render();
     }
 
     /**

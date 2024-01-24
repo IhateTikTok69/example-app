@@ -23,7 +23,10 @@ return new class extends Migration
             $table->string('status');
             $table->dateTime('completed_at')->nullable();
             $table->timestamps();
-
+            $table->string('shippingStatus')->nullable();
+            $table->string('shippingAgent')->nullable();
+            $table->string('trackingNum')->nullable();
+            $table->string('trackingStatus')->nullable();
             // Foreign Key for 'roomNum'
             $table->foreign('product_id')->references('product_id')->on('products');
 

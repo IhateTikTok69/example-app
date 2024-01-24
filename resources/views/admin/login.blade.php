@@ -1,9 +1,8 @@
-      @if (session()->has('email'))
-      <div class="alert">
-        {{session('email')}}
-      </div>
-  @endif
-  @dump(session('email'))
+@if (session()->has('email'))
+  <div class="alert">
+    {{session('email')}}
+  </div>
+@endif
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,7 +17,7 @@
         @vite('resources/css/app.css')
       </head>
 <body>
-    <div class="admin_login">
+    <div class="admin_login h-56">
       
       <h1 class=" text-4xl">Login Page</h1>
       <form action="/admin/login" method="POST">

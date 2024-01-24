@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         cities::factory(60)->create();
         product::factory(100)->create();
         users::factory(20)->create();
-        transactions::factory(500)->create();
+        transactions::factory(100)->create();
         admin::create([
             'name' => fake()->name(),
             'username' => 'user',

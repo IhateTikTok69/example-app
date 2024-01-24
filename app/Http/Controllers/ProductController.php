@@ -44,7 +44,7 @@ class ProductController extends Controller
     {
         $key = $request->input('id');
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DB::table('rooms')->where('roomNum', $key)->delete();
+        DB::table('products')->where('product_id', $key)->delete();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         return back();
     }

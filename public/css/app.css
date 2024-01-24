@@ -298,3 +298,14 @@ select{
 .stylized-File:hover{
     border: 2px dashed var(--main-color);
 }
+.button-list>button{
+    margin: 0px;
+    margin-left: 10px;
+    padding: 20px;
+}
+.selected-filter{
+    border-bottom: 2px solid lightgreen;
+}
+.orderDetails>table>tbody>tr>th{
+    border-bottom: 1px solid lightgray;
+}
